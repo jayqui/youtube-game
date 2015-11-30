@@ -1,0 +1,70 @@
+body {
+	font-family: sans-serif;
+	background: url("../images/YouTube-icon-full_color.png") center center no-repeat fixed;
+	background-size: auto 300%;
+}
+ul, li {
+	margin: 0; padding: 0;
+	list-style-type: none;
+}
+.inner-shell {
+	max-width: 1200px;
+	margin: 0 auto;
+	border-radius: 40px;
+	background-color: rgba(255,255,255,0.6);
+	text-align: center;
+}
+.video-example {
+	display: inline-block;
+	margin: 0 30px;
+}
+.instructions {
+	margin: 0 auto;
+	max-width: 600px;
+}
+.word {
+	display: inline-block;
+	margin: 1px;
+	padding: 0 10px;
+	min-width: 80px;
+	border-radius: 10px;
+	background-color: #6cf;
+	cursor: move;
+	font-family: "Lora", serif;
+}
+.droppable {
+	min-width: 300px;
+	min-height: 100px;
+	border: 1px dotted #ccc;
+	background-color: rgba(200,200,200,1);
+	overflow: auto;
+	font-size: 1.1em;
+}
+.x-img {
+	width: 20px;
+	cursor: pointer;
+	margin-left: 5px;
+	border: 1px outset #aaa;
+}
+.x-img:hover {
+	border: 1px inset #aaa;
+}
+input[type=submit] {
+		margin: 3px;
+    border:0 none;
+    padding:5px 15px; 
+		background-color: #6cf;
+    cursor:pointer;
+    border-radius: 5px; 
+    font-size: 160%;
+}
+
+.results-container {
+	width: 100%;
+	background-color: rgba(255,255,255,0.6);
+}
+.videos-list li {
+	display: inline-block;
+	margin: 0 5px;
+	max-width: 320px;
+}

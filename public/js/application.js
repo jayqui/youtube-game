@@ -4,15 +4,18 @@ controllers = {};
 
 controllers.YouTubeController = function setVideos($scope) {
 	$scope.$on('$viewContentLoaded', function() {
+		// this should be the work of a words controller
 		for (var i = 0; i < 10; i++) {	
 			var randomNum = Math.floor(Math.random() * SIMPLE_WORDS.length);
 			var $word = $("<h2>", {class: "word", text: SIMPLE_WORDS[randomNum]}).draggable({
 				helper: "clone",
-				appendTo: ".droppable",
+				appendTo: ".drop-words-here",
 			});
 			$word.appendTo(".words-list");
 		}
-		$(".droppable").droppable({
+
+		// this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
+		$(".drop-words-here").droppable({
 			accept: ".word",
 			activate: function(event, ui) {
 				$(this).css("border","3px solid #6cf");
@@ -27,6 +30,8 @@ controllers.YouTubeController = function setVideos($scope) {
 			},
 		});
 	})
+
+		// this should be a property of a results controller that gets created based on the AJAX result.
 	$scope.videos = [
 		{title: 'Holiday/Wedding Makeup Tutorial', id: 'Xc6R4EIR_lk', views: 13945},
 		{title: 'Holiday ootd | one year wedding anniversary | plus concert ootd', id: 'w8aFmmNweiw', views: 77},

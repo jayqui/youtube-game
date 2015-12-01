@@ -1,12 +1,17 @@
 var youTubeApp = angular.module('youTubeApp', ['ngRoute']);
 
 controllers = {};
+
 controllers.YouTubeController = function setVideos($scope) {
 	$scope.$on('$viewContentLoaded', function() {
-		$(".word").draggable({
-			helper: "clone",
-			appendTo: ".droppable",
-		});
+		for (var i = 0; i < 10; i++) {	
+			var randomNum = Math.floor(Math.random() * SIMPLE_WORDS.length);
+			var $word = $("<h2>", {class: "word", text: SIMPLE_WORDS[randomNum]}).draggable({
+				helper: "clone",
+				appendTo: ".droppable",
+			});
+			$word.appendTo(".words-list");
+		}
 		$(".droppable").droppable({
 			accept: ".word",
 			activate: function(event, ui) {
@@ -47,8 +52,3 @@ youTubeApp.config(function($routeProvider) {
 		})
 		.otherwise({ redirectTo: '/' });
 });
-
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}

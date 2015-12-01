@@ -1,17 +1,20 @@
 body {
-	font-family: sans-serif;
-	background: url("../images/YouTube-icon-full_color.png") center center no-repeat fixed;
-	background-size: auto 300%;
+	font-family: "Lato", sans-serif;
+	background: url("../images/world-map-3.jpg") center center no-repeat fixed;
+	background-size: auto 100%;
 }
 ul, li {
 	margin: 0; padding: 0;
 	list-style-type: none;
 }
+.title-text {	
+	text-shadow: 1px 1px 1px #fff, 2px 0px 2px #6cf, -2px 0px 2px #E52D27, 0px 2px 2px #6cf, 0px -2px 2px #E52D27,;
+}
 .inner-shell {
 	max-width: 1200px;
 	margin: 0 auto;
 	border-radius: 40px;
-	background-color: rgba(255,255,255,0.6);
+	background-color: rgba(255,255,255,0.7);
 	text-align: center;
 }
 .video-example {
@@ -32,13 +35,20 @@ ul, li {
 	cursor: move;
 	font-family: "Lora", serif;
 }
-.droppable {
-	min-width: 300px;
+.drop-words-here {
+	margin: 0 auto;
+	max-width: 500px;
 	min-height: 100px;
 	border: 1px dotted #ccc;
-	background-color: rgba(200,200,200,1);
+	/*background-color: rgba(200,200,200,1);*/
+	background: url("../images/YouTube-icon-full_color.png") center center no-repeat fixed;
+	background-size: auto 75%;
 	overflow: auto;
 	font-size: 1.1em;
+	box-sizing: border-box;
+}
+.search-prompt-text {
+	text-shadow: 1px 1px 1px #fff, 2px 0px 2px #6cf, -2px 0px 2px #6cf, 0px 2px 2px #6cf, 0px -2px 2px #6cf,;
 }
 .x-img {
 	width: 20px;
@@ -60,8 +70,8 @@ input[type=submit] {
 }
 
 .results-container {
-	width: 100%;
-	background-color: rgba(255,255,255,0.6);
+	/*width: 100%;*/
+	/*background-color: rgba(255,255,255,0.7);*/
 }
 .videos-list li {
 	display: inline-block;

@@ -14,6 +14,9 @@ controllers.YouTubeController = function setVideos($scope) {
 			$word.appendTo(".words-list");
 		}
 
+		$scope.chosenWords = [];
+		var chosenWords = $scope.chosenWords;
+
 		// this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
 		$(".drop-words-here").droppable({
 			accept: ".word",
@@ -27,7 +30,14 @@ controllers.YouTubeController = function setVideos($scope) {
 				var $ximg = $("<img>", {src: "images/x.png", class: "x-img"})
 				$ximg.click(function(){ $(this).parent().remove() });
 				$(this).append($(ui.draggable).clone().css("cursor","default").append($ximg));
+				var word = $(ui.draggable).text();
+				chosenWords.push(word);
 			},
+		});
+
+		$(".let-the-games-begin").on("submit", function(event) {
+			event.preventDefault();
+			alert(chosenWords);
 		});
 	})
 

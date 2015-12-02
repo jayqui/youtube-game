@@ -15,8 +15,8 @@ ul, li {
 }
 .inner-shell {
 	max-width: 1200px;
-	border-left: 10px solid #E52D27;
-	border-right: 10px solid #E52D27;
+	border-left: 7px solid #E52D27;
+	border-right: 7px solid #E52D27;
 	/*border: 5px solid rgba(229,45,39,1);*/
 	margin: 0 auto;
 	border-radius: 40px;

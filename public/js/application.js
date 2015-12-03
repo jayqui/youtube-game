@@ -2,7 +2,7 @@ var youTubeApp = angular.module('youTubeApp', ['ngRoute']);
 
 controllers = {};
 
-controllers.YouTubeController = function setVideos($scope) {
+controllers.YouTubeController = function setVideos($scope, $http) {
 	$scope.$on('$viewContentLoaded', function() {
 		// this should be the work of a words controller
 		for (var i = 0; i < 10; i++) {	
@@ -37,7 +37,15 @@ controllers.YouTubeController = function setVideos($scope) {
 
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
-			alert(chosenWords);
+			alert(chosenWords)
+			$.post("/search", {
+				// method: "POST",
+				data: chosenWords.join(' '),
+			})
+			.done(function(response) {
+				console.log(response);
+			});
+			// alert(chosenWords);
 		});
 	})
 

@@ -37,15 +37,12 @@ controllers.YouTubeController = function setVideos($scope, $http) {
 
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
-			alert(chosenWords)
 			$.post("/search", {
-				// method: "POST",
 				data: chosenWords.join(' '),
 			})
 			.done(function(response) {
 				console.log(response);
 			});
-			// alert(chosenWords);
 		});
 	})
 

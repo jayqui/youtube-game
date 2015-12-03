@@ -3,5 +3,8 @@ get '/' do
 end
 
 post '/search' do
-	params.to_json
+	if request.xhr?
+		p params
+		params.to_json
+	end
 end

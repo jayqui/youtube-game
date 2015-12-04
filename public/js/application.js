@@ -3,6 +3,20 @@ var youTubeApp = angular.module('youTubeApp', ['ngRoute']);
 controllers = {};
 
 controllers.YouTubeController = function setVideos($scope, $http) {
+
+	// this should be a property of a results controller that gets created based on the AJAX result.
+	$scope.videos = [
+		// {title: 'Holiday/Wedding Makeup Tutorial', id: 'Xc6R4EIR_lk', views: 13945},
+		// {title: 'Holiday ootd | one year wedding anniversary | plus concert ootd', id: 'w8aFmmNweiw', views: 77},
+		{title: 'Maroon 5 - Sugar', id: '09R8_2nJtjg', views: 860962173}
+  ];
+  var prepareResultsForDisplay = function(results) {
+		$scope.videos.push({title:"sample",id:"1234",views:2});
+		window.location.href = "#/game";
+  }
+  prepareResultsForDisplay('whatever');
+  prepareResultsForDisplay('whatever');
+
 	$scope.$on('$viewContentLoaded', function() {
 		// this should be the work of a words controller
 		for (var i = 0; i < 10; i++) {	
@@ -16,6 +30,7 @@ controllers.YouTubeController = function setVideos($scope, $http) {
 
 		$scope.chosenWords = [];
 		var chosenWords = $scope.chosenWords;
+
 
 		// this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
 		$(".drop-words-here").droppable({
@@ -61,19 +76,16 @@ controllers.YouTubeController = function setVideos($scope, $http) {
 				.then(function(response) {
 					console.log("query:",chosenWords);
 					console.log("success:",JSON.stringify(response.data));
+					// console.log("first result:",JSON.stringify(response.data[0]));
+					// chosenWords.push(response.data[0]);
+					prepareResultsForDisplay('responseDataGoesHere');
 				}, function(response){
+					alert("something went wrong...");
 					console.log("error:", response)
 				});
 			}
 		});
 	})
-
-		// this should be a property of a results controller that gets created based on the AJAX result.
-	$scope.videos = [
-		{title: 'Holiday/Wedding Makeup Tutorial', id: 'Xc6R4EIR_lk', views: 13945},
-		{title: 'Holiday ootd | one year wedding anniversary | plus concert ootd', id: 'w8aFmmNweiw', views: 77},
-		{title: 'Maroon 5 - Sugar', id: '09R8_2nJtjg', views: 860962173}
-  ]; 
 };
 
 youTubeApp.controller(controllers);

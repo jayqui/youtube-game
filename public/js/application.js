@@ -48,18 +48,23 @@ controllers.YouTubeController = function setVideos($scope, $http) {
 
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
-			$http({
-				method: "POST",
-				url: "/search", 
-				data: "data=" + chosenWords.join(" "),
-				headers: {"Content-Type": "application/x-www-form-urlencoded"},
-			})
-			.then(function(response) {
-				// console.log("success:",response);
-				console.log("success:",JSON.stringify(response.data));
-			}, function(response){
-				console.log("error:", response)
-			});
+			if (chosenWords.length < 1) {
+				alert("ERROR: no words selected for search");
+			}
+			else {
+				$http({
+					method: "POST",
+					url: "/search", 
+					data: "data=" + chosenWords.join(" "),
+					headers: {"Content-Type": "application/x-www-form-urlencoded"},
+				})
+				.then(function(response) {
+					console.log("query:",chosenWords);
+					console.log("success:",JSON.stringify(response.data));
+				}, function(response){
+					console.log("error:", response)
+				});
+			}
 		});
 	})
 

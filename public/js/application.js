@@ -27,21 +27,38 @@ controllers.YouTubeController = function setVideos($scope, $http) {
 				$(this).css("border","none");
 			},
 			drop: function(event, ui) {
-				var $ximg = $("<img>", {src: "images/x.png", class: "x-img"})
-				$ximg.click(function(){ $(this).parent().remove() });
+				// x to append
+				var $ximg = $("<img>", {src: "images/x.png", class: "x-img"});
+
+				// append word
 				$(this).append($(ui.draggable).clone().css("cursor","default").append($ximg));
 				var word = $(ui.draggable).text();
 				chosenWords.push(word);
+
+				// handle x click
+				$ximg.click(function(){ 
+					var word = $(this).parent().text();
+					chosenWords = chosenWords.filter(function(ele) {
+						return ele !== word;
+					});
+					$(this).parent().remove();
+				});
 			},
 		});
 
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
-			$.post("/search", {
-				data: chosenWords.join(' '),
+			$http({
+				method: "POST",
+				url: "/search", 
+				data: "data=" + chosenWords.join(" "),
+				headers: {"Content-Type": "application/x-www-form-urlencoded"},
 			})
-			.done(function(response) {
-				console.log(response);
+			.then(function(response) {
+				// console.log("success:",response);
+				console.log("success:",JSON.stringify(response.data));
+			}, function(response){
+				console.log("error:", response)
 			});
 		});
 	})

@@ -25,7 +25,7 @@ class YouTubeSearch
 				}
 			end
 		end.flatten
-		results.to_json
+		results
 	end
 
 	private
@@ -36,14 +36,14 @@ class YouTubeSearch
 
 end
 
-# DEMO
-require_relative "../../../SIMPLE_WORDS"
-a = SIMPLE_WORDS.sample(3).join(' ')
+# # DEMO
+# require_relative "../../../SIMPLE_WORDS"
+# a = SIMPLE_WORDS.sample(3).join(' ')
 
-yt = YouTubeSearch.new
-qa = yt.search_query(a,3)
+# yt = YouTubeSearch.new
+# qa = yt.search_query(a,3)
 
-puts a
-# puts qa
-puts JSON.parse(qa)
-puts
+# puts a
+# # puts qa
+# puts JSON.parse(qa)
+# puts

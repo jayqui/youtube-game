@@ -3,11 +3,10 @@ get '/' do
 end
 
 post '/search' do
-	if request.xhr?
-		# p params
-		yt = YouTubeSearch.new
-		qa = yt.search_query(params[:data],10)
-		# p qa
-		qa.to_json
-	end
+	# if request.xhr?
+	# p "params: #{params}"
+	yt = YouTubeSearch.new
+	qa = yt.search_query(params[:data],10)
+	qa.to_json
+	# end
 end

@@ -117,6 +117,13 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 				alert("ERROR: no words selected for search");
 			}
 			else {
+				// progress bar
+				$(".message-pane").progressbar({
+					value: false,
+				});
+				$(".message-pane").find(".ui-progressbar-value").css({background: "#E52D27"});
+
+				// AJAX request to search YouTube
 				$http({
 					method: "POST",
 					url: "/search", 
@@ -128,7 +135,10 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 					console.log("success:",JSON.stringify(response.data));
 					prepareResultsForDisplay(response.data);
 				}, function(response){
-					alert("something went wrong...");
+					$(".message-pane").hide();
+					$(".message-pane").text("Something went wrong...").css("color","red");
+					$(".message-pane").show();
+					// alert("something went wrong...");
 					console.log("error:", response)
 				});
 			}

@@ -73,6 +73,11 @@ input[type=submit] {
     border-radius: 5px; 
     font-size: 160%;
 }
+.message-pane {
+	margin: 10px auto;
+	width: 200px;
+	height: 20px;
+}
 
 .results-container {
 	/*width: 100%;*/

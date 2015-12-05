@@ -44,8 +44,8 @@ controllers = {};
 controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, VideoFactory) {
 
 	var clearFactoriesIfBackButton = function() {
-		var $input = $('#did-user-hit-back-button');
 		// Note: there's a script in the `introduction` partial that changes $input.val() to 'yes' every (first) time that partial is visited
+		var $input = $('#did-user-hit-back-button');
     // alert("$input.val():" + $input.val())
 		if ($input.val() == 'yes') {
 			QueryFactory.clearChosenWords();
@@ -95,7 +95,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 				// x to append
 				var $ximg = $("<img>", {src: "images/x.png", class: "x-img"});
 
-				// append word
+				// append word and x image
 				$(this).append($(ui.draggable).clone().css("cursor","default").append($ximg));
 				var word = $(ui.draggable).text();
 				$scope.chosenWords.push(word);
@@ -111,17 +111,32 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 			},
 		});
 
+		var errorMessage = function(message) {
+			if ($(".progress-bar-pane").is(":visible")) {
+				$(".progress-bar-pane").hide();
+			}
+			$(".message-pane").text(message);
+			$(".message-pane").show();
+		}
+		var showProgressBar = function() {
+			if ($(".message-pane").is(":visible")) {
+				$(".message-pane").hide();
+			}
+			$(".progress-bar-pane").show();
+		}
+
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
 			if ($scope.chosenWords.length < 1) {
-				alert("ERROR: no words selected for search");
+				errorMessage("ERROR: no words selected for search.");
 			}
 			else {
 				// progress bar
-				$(".message-pane").progressbar({
+				$(".progress-bar-pane").progressbar({
 					value: false,
 				});
-				$(".message-pane").find(".ui-progressbar-value").css({background: "#E52D27"});
+				$(".progress-bar-pane").find(".ui-progressbar-value").css({background: "#E52D27"});
+				showProgressBar();
 
 				// AJAX request to search YouTube
 				$http({
@@ -135,10 +150,8 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 					console.log("success:",JSON.stringify(response.data));
 					prepareResultsForDisplay(response.data);
 				}, function(response){
-					$(".message-pane").hide();
-					$(".message-pane").text("Something went wrong...").css("color","red");
-					$(".message-pane").show();
-					// alert("something went wrong...");
+					$(".progress-bar-pane").hide();
+					errorMessage("Something went wrong. Please try again.");
 					console.log("error:", response)
 				});
 			}

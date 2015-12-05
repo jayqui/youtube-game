@@ -74,8 +74,15 @@ input[type=submit] {
     font-size: 160%;
 }
 .message-pane {
-	margin: 10px auto;
-	width: 200px;
+	display: none;
+}
+.message-pane, .progress-bar-pane {
+	background: transparent;
+	color: red;
+	margin: 5px auto;
+	text-align: center;
+	min-width: 200px;
+	max-width: 400px;
 	height: 20px;
 }
 

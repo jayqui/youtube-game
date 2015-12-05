@@ -3,6 +3,17 @@ var youTubeApp = angular.module('youTubeApp', ['ngRoute']);
 youTubeApp.factory("QueryFactory",function() {
 	var obj = {};
 	obj.chosenWords = [];
+	obj.alertWords = function() {
+		if (obj.chosenWords.length > 0) {
+			alert("obj.chosenWords:" + obj.chosenWords);
+		} else {
+			alert("no words chosen yet");
+		}
+	}
+	obj.clearChosenWords = function() {
+		// alert("The words have been:" + obj.chosenWords + "but now clearing list of chosen Words!")
+		obj.chosenWords = [];
+	}
 	return obj;
 });
 youTubeApp.factory("VideoFactory",function() {
@@ -20,13 +31,30 @@ youTubeApp.factory("VideoFactory",function() {
 			}
 		}
 	}
+	obj.clearVideos = function() {
+		// if (obj.videos.length > 0)
+			// alert("The videos have included:" + obj.videos[0].title + "but now clearing list of videos!")
+		obj.videos = [];
+	}
 	return obj;	
 })
 
 controllers = {};
 
 controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, VideoFactory) {
+
+	var clearFactoriesIfBackButton = function() {
+		var $input = $('#did-user-hit-back-button');
+		// Note: there's a script in the `introduction` partial that changes $input.val() to 'yes' every (first) time that partial is visited
+    // alert("$input.val():" + $input.val())
+		if ($input.val() == 'yes') {
+			QueryFactory.clearChosenWords();
+			VideoFactory.clearVideos();
+			$input.val('no');
+		}
+	}
  	
+	clearFactoriesIfBackButton();
 	$scope.chosenWords = QueryFactory.chosenWords;
 	$scope.videos = VideoFactory.videos;
 	$scope.median = VideoFactory.medianViews();

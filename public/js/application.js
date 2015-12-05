@@ -106,6 +106,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 					$scope.chosenWords = $scope.chosenWords.filter(function(ele) {
 						return ele !== word;
 					});
+					QueryFactory.chosenWords = $scope.chosenWords;
 					$(this).parent().remove();
 				});
 			},

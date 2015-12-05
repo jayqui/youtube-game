@@ -31,6 +31,11 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
  	$scope.videos = VideoFactory.videos;
 
   var prepareResultsForDisplay = function(results) {
+  	results.map(function(result) {
+  		result.id = result.url.replace("https://www.youtube.com/watch?v=","");
+  		delete result.url;
+  		return result;
+  	})
 		results.forEach(function(result){
 			$scope.videos.push(result)
 		});
@@ -38,7 +43,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
   }
 
 	$scope.$on('$viewContentLoaded', function() {
-		// this should be the work of a words controller
+		// I think this should be the work of a words controller
 		for (var i = 0; i < 10; i++) {	
 			var randomNum = Math.floor(Math.random() * SIMPLE_WORDS.length);
 			var $word = $("<h2>", {class: "word", text: SIMPLE_WORDS[randomNum]}).draggable({
@@ -52,7 +57,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 		var chosenWords = $scope.chosenWords;
 
 
-		// this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
+		// I think this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
 		$(".drop-words-here").droppable({
 			accept: ".word",
 			activate: function(event, ui) {

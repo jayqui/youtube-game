@@ -17,6 +17,9 @@
   </head>
   
   <body>
-    <div class="inner-shell" data-ng-view=""></div>
-  </body>
+    <input type="hidden" id="did-user-hit-back-button" value="no">
+		<div class="inner-shell" data-ng-view="">
+			<%= yield %>
+		</div>
+	</body>
 </html>

@@ -1,5 +1,14 @@
 <h1 class="title-h1">The <span class="title-youtube-text">YouTube</span> Game</h1>
 
+<script>
+	$(document).ready(function(e) {
+    var $input = $('#did-user-hit-back-button');
+		if ($input.val() == 'no') {
+			$input.val('yes');
+    }
+	});
+</script>
+
 <h3>Today's random words:</h3>
 
 <div class="words-list"></div>
@@ -15,7 +24,7 @@
 	<span class="search-prompt-text">Search YouTube:</span>
 </div>
 
-<form class="let-the-games-begin" method="get" action="#/game">
+<form class="let-the-games-begin" method="post" action="#/game">
 	<input type="hidden" name="query">
 	<input type="submit" value="Search!">
 </form>

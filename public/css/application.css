@@ -78,6 +78,10 @@ input[type=submit] {
 	/*width: 100%;*/
 	/*background-color: rgba(255,255,255,0.7);*/
 }
+.words-used li{
+	display: inline-block;
+	margin: 5px;
+}
 .videos-list li {
 	display: inline-block;
 	margin: 0 5px;

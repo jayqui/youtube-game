@@ -13,10 +13,11 @@ youTubeApp.factory("QueryFactory",function() {
 });
 youTubeApp.factory("VideoFactory",function() {
 	var obj = {};
-	obj.videos = [{title: "From Tha Factoray", id:"4567", views:"666"}];
-	obj.addVideo = function(videoObj) {
-		obj.videos.push(videoObj);
-	};
+	obj.videos = [];
+	// obj.videos = [{title: "From Tha Factoray", id:"4567", views:"666"}];
+	// obj.addVideo = function(videoObj) {
+	// 	obj.videos.push(videoObj);
+	// };
 	// obj.removeVideo = function(videoObj) {
 	// 	obj.videos = obj.videos.filter(function(ele) {return ele !== videoObj});
 	// }
@@ -29,17 +30,10 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
  	
  	$scope.videos = VideoFactory.videos;
 
-	// this should be a property of a results controller that gets created based on the AJAX result.
-	// $scope.videos = [
-	// 	// {title: 'Holiday/Wedding Makeup Tutorial', id: 'Xc6R4EIR_lk', views: 13945},
-	// 	// {title: 'Holiday ootd | one year wedding anniversary | plus concert ootd', id: 'w8aFmmNweiw', views: 77},
-	// 	{title: 'Maroon 5 - Sugar', id: '09R8_2nJtjg', views: 860962173}
- //  ];
-
-
   var prepareResultsForDisplay = function(results) {
-		$scope.videos.push({title:"sample",id:"1234",views:2});
-		$scope.videos.push({title:"sample2!!!!",id:"1234",views:2});
+		results.forEach(function(result){
+			$scope.videos.push(result)
+		});
 		window.location.href = "#/game";
   }
 
@@ -104,7 +98,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 					console.log("success:",JSON.stringify(response.data));
 					// console.log("first result:",JSON.stringify(response.data[0]));
 					// chosenWords.push(response.data[0]);
-					prepareResultsForDisplay('responseDataGoesHere');
+					prepareResultsForDisplay(response.data);
 				}, function(response){
 					alert("something went wrong...");
 					console.log("error:", response)

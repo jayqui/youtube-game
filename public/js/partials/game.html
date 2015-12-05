@@ -1,7 +1,6 @@
-<h3>Results</h3>
 <div class="results-container" ng-controller="YouTubeController">
 	filter these results: <input ng-model="query">
-	<h2>Your score: {{median}}</h2>
+	<h2>Your score: {{median | number}}</h2>
 	<ul class="words-used">
 		<li>You searched:</li>
 		<li class="word" data-ng-repeat="word in chosenWords track by $index">

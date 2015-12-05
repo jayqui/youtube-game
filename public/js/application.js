@@ -85,6 +85,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 		// I think this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
 		$(".drop-words-here").droppable({
 			accept: ".word",
+			tolerance: "touch",
 			activate: function(event, ui) {
 				$(this).css("border","3px solid #6cf");
 			},

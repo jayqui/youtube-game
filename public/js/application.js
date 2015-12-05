@@ -3,24 +3,23 @@ var youTubeApp = angular.module('youTubeApp', ['ngRoute']);
 youTubeApp.factory("QueryFactory",function() {
 	var obj = {};
 	obj.chosenWords = [];
-	obj.addWord = function(word) {
-		obj.chosenWords.push(word);
-	};
-	obj.removeWord = function(word) {
-		obj.chosenWords = obj.chosenWords.filter(function(ele) {return ele !== word});
-	}
 	return obj;
 });
 youTubeApp.factory("VideoFactory",function() {
 	var obj = {};
 	obj.videos = [];
-	// obj.videos = [{title: "From Tha Factoray", id:"4567", views:"666"}];
-	// obj.addVideo = function(videoObj) {
-	// 	obj.videos.push(videoObj);
-	// };
-	// obj.removeVideo = function(videoObj) {
-	// 	obj.videos = obj.videos.filter(function(ele) {return ele !== videoObj});
-	// }
+	obj.medianViews = function() {
+		if (obj.videos.length > 1) {		
+			var sorted = obj.videos.sort(function(a,b) {return a.views - b.views})
+			var half = Math.floor(sorted.length/2);
+			if (sorted.length % 2 == 0) {
+				return (sorted[half-1].views + sorted[half].views)/2
+			}
+			else {
+				return sorted[half].views
+			}
+		}
+	}
 	return obj;	
 })
 
@@ -28,7 +27,9 @@ controllers = {};
 
 controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, VideoFactory) {
  	
- 	$scope.videos = VideoFactory.videos;
+	$scope.chosenWords = QueryFactory.chosenWords;
+	$scope.videos = VideoFactory.videos;
+	$scope.median = VideoFactory.medianViews();
 
   var prepareResultsForDisplay = function(results) {
   	results.map(function(result) {
@@ -53,10 +54,6 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 			$word.appendTo(".words-list");
 		}
 
-		$scope.chosenWords = [];
-		var chosenWords = $scope.chosenWords;
-
-
 		// I think this should be the work of a search box controller (which should be an object with an array of words that gets the new content (a new Word object?) pushed in on the drop event.)
 		$(".drop-words-here").droppable({
 			accept: ".word",
@@ -73,12 +70,12 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 				// append word
 				$(this).append($(ui.draggable).clone().css("cursor","default").append($ximg));
 				var word = $(ui.draggable).text();
-				chosenWords.push(word);
+				$scope.chosenWords.push(word);
 
 				// handle x click
 				$ximg.click(function(){ 
 					var word = $(this).parent().text();
-					chosenWords = chosenWords.filter(function(ele) {
+					$scope.chosenWords = $scope.chosenWords.filter(function(ele) {
 						return ele !== word;
 					});
 					$(this).parent().remove();
@@ -88,21 +85,19 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 
 		$(".let-the-games-begin").on("submit", function(event) {
 			event.preventDefault();
-			if (chosenWords.length < 1) {
+			if ($scope.chosenWords.length < 1) {
 				alert("ERROR: no words selected for search");
 			}
 			else {
 				$http({
 					method: "POST",
 					url: "/search", 
-					data: "data=" + chosenWords.join(" "),
+					data: "data=" + $scope.chosenWords.join(" "),
 					headers: {"Content-Type": "application/x-www-form-urlencoded"},
 				})
 				.then(function(response) {
-					console.log("query:",chosenWords);
+					console.log("query:",$scope.chosenWords);
 					console.log("success:",JSON.stringify(response.data));
-					// console.log("first result:",JSON.stringify(response.data[0]));
-					// chosenWords.push(response.data[0]);
 					prepareResultsForDisplay(response.data);
 				}, function(response){
 					alert("something went wrong...");

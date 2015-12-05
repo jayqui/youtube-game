@@ -2,23 +2,18 @@ source "https://rubygems.org"
 ruby '2.0.0'
 
 gem "sinatra"
+gem 'sinatra-contrib'
 gem "nokogiri"
 gem "json"
 
-gem 'pg'
-
-gem 'sinatra'
-gem 'sinatra-contrib'
-
+gem 'shotgun'
+gem 'rake'
 gem 'thin'
+
+gem 'pg'
 
 gem 'activesupport'
 gem 'activerecord'
-
-gem 'rake'
-
-gem 'shotgun'
-gem 'faker'
 
 group :test do
   gem 'shoulda-matchers'

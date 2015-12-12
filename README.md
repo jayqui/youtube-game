@@ -22,4 +22,5 @@ $ shotgun config.ru
 Then visit `localhost:9393` in your browser.
 
 author: [Jay Quigley](http://jayqui.com)
+
 Any bugs, comments, or suggestions, please email jayqui at outlook dot com.

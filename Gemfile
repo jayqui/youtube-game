@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby '2.0.0'
+# ruby '2.0.0'  # Heroku seemed to want this
 
 gem "sinatra"
 gem 'sinatra-contrib'

@@ -1,110 +1,110 @@
 body {
-	font-family: "Lato", sans-serif;
-	background: url("../images/world-map-3.jpg") center center no-repeat fixed;
-	background-size: auto 100%;
+  font-family: "Lato", sans-serif;
+  background: url("../images/world-map-3.jpg") center center no-repeat fixed;
+  background-size: auto 100%;
 }
 ul, li {
-	margin: 0; padding: 0;
-	list-style-type: none;
+  margin: 0; padding: 0;
+  list-style-type: none;
 }
 .title-h1 {
-	margin-top: 0;
+  margin-top: 0;
 }
 .title-youtube-text {
-	text-shadow: 1px 1px 1px #fff, 2px 0px 2px #6cf, -2px 0px 2px #E52D27, 0px 2px 2px #6cf, 0px -2px 2px #E52D27;
+  text-shadow: 1px 1px 1px #fff, 2px 0px 2px #6cf, -2px 0px 2px #E52D27, 0px 2px 2px #6cf, 0px -2px 2px #E52D27;
 }
 .inner-shell {
-	max-width: 1200px;
-	margin: 0 auto;
-	border-left: 7px solid #E52D27;
-	border-right: 7px solid #E52D27;
-	border-radius: 40px;
-	background-color: rgba(255,255,255,0.7);
-	text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-left: 7px solid #E52D27;
+  border-right: 7px solid #E52D27;
+  border-radius: 40px;
+  background-color: rgba(255,255,255,0.7);
+  text-align: center;
 }
 .video-example {
-	display: inline-block;
-	margin: 0 30px;
+  display: inline-block;
+  margin: 0 30px;
 }
 .instructions {
-	margin: 0 auto;
-	max-width: 600px;
+  margin: 0 auto;
+  max-width: 600px;
 }
 .word {
-	display: inline-block;
-	margin: 1px;
-	padding: 0 10px;
-	min-width: 80px;
-	border-radius: 10px;
-	background-color: #6cf;
-	cursor: move;
-	font-family: "Lora", serif;
+  display: inline-block;
+  margin: 1px;
+  padding: 0 10px;
+  min-width: 80px;
+  border-radius: 10px;
+  background-color: #6cf;
+  cursor: move;
+  font-family: "Lora", serif;
 }
 .drop-words-here {
-	margin: 0 auto;
-	max-width: 500px;
-	min-height: 100px;
-	border: 1px dotted #ccc;
-	/*background-color: rgba(200,200,200,1);*/
-	background: url("../images/YouTube-icon-full_color-2.png") center center no-repeat fixed;
-	background-size: auto 75%;
-	overflow: auto;
-	font-size: 1.1em;
-	box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 500px;
+  min-height: 100px;
+  border: 1px dotted #ccc;
+  /*background-color: rgba(200,200,200,1);*/
+  background: url("../images/YouTube-icon-full_color-2.png") center center no-repeat fixed;
+  background-size: auto 75%;
+  overflow: auto;
+  font-size: 1.1em;
+  box-sizing: border-box;
 }
 .search-prompt-text {
-	text-shadow: 1px 1px 1px #fff, -2px -1px 1px #E52D27, -2px 1px 1px #6cf;
+  text-shadow: 1px 1px 1px #fff, -2px -1px 1px #E52D27, -2px 1px 1px #6cf;
 }
 .x-img {
-	width: 20px;
-	cursor: pointer;
-	margin-left: 5px;
-	border: 1px outset #aaa;
+  width: 20px;
+  cursor: pointer;
+  margin-left: 5px;
+  border: 1px outset #aaa;
 }
 .x-img:hover {
-	border: 1px inset #aaa;
+  border: 1px inset #aaa;
 }
 input[type=submit] {
-		margin: 3px;
+    margin: 3px;
     border:0 none;
     padding:5px 15px; 
-		background-color: #6cf;
+    background-color: #6cf;
     cursor:pointer;
     border-radius: 5px; 
     font-size: 160%;
 }
 .message-pane {
-	display: none;
+  display: none;
 }
 .message-pane, .progress-bar-pane {
-	background: transparent;
-	color: red;
-	margin: 5px auto;
-	text-align: center;
-	min-width: 200px;
-	max-width: 400px;
-	height: 20px;
+  background: transparent;
+  color: red;
+  margin: 5px auto;
+  text-align: center;
+  min-width: 200px;
+  max-width: 400px;
+  height: 20px;
 }
 
 .results-container {
-	/*width: 100%;*/
-	/*background-color: rgba(255,255,255,0.7);*/
+  /*width: 100%;*/
+  /*background-color: rgba(255,255,255,0.7);*/
 }
 .words-used li{
-	display: inline-block;
-	margin: 5px;
+  display: inline-block;
+  margin: 5px;
 }
 .videos-list li {
-	display: inline-block;
-	margin: 0 5px;
-	max-width: 320px;
+  display: inline-block;
+  margin: 0 5px;
+  max-width: 320px;
 }
 .yt-embed {
-	width:100%;
-	height:100%;
-	width: 320px;
-	height: 180px;
-	float: none;
-	clear: both;
-	margin: 2px auto;
+  width:100%;
+  height:100%;
+  width: 320px;
+  height: 180px;
+  float: none;
+  clear: both;
+  margin: 2px auto;
 }

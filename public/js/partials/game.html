@@ -1,19 +1,19 @@
 <div class="results-container" ng-controller="YouTubeController">
-	filter these results: <input ng-model="query">
-	<h2>Your score: {{median | number}}</h2>
-	<ul class="words-used">
-		<li>You searched:</li>
-		<li class="word" data-ng-repeat="word in chosenWords track by $index">
-			{{word}}
-		</li>
-	</ul>
-	<ul class="videos-list">
-		<li data-ng-repeat="video in videos | filter: query | orderBy:'-views'">
-			<a target="_blank" href="https://youtube.com/watch?v={{video.id}}">{{video.title}}</a>
-			<br>
-			{{video.views | number}} views
-			<br>
-			<object class="yt-embed" data="http://www.youtube.com/embed/{{video.id}}" allowFullScreen="true"></object>
-		</li>
-	</ul>
+  filter these results: <input ng-model="query">
+  <h2>Your score: {{median | number}}</h2>
+  <ul class="words-used">
+    <li>You searched:</li>
+    <li class="word" data-ng-repeat="word in chosenWords track by $index">
+      {{word}}
+    </li>
+  </ul>
+  <ul class="videos-list">
+    <li data-ng-repeat="video in videos | filter: query | orderBy:'-views'">
+      <a target="_blank" href="https://youtube.com/watch?v={{video.id}}">{{video.title}}</a>
+      <br>
+      {{video.views | number}} views
+      <br>
+      <object class="yt-embed" data="http://www.youtube.com/embed/{{video.id}}" allowFullScreen="true"></object>
+    </li>
+  </ul>
 </div>

@@ -1,12 +1,12 @@
 <h1 class="title-h1">The <span class="title-youtube-text">YouTube</span> Game <small style="color:grey">[beta]</small></h1>
 
 <script>
-	$(document).ready(function(e) {
+  $(document).ready(function(e) {
     var $input = $('#did-user-hit-back-button');
-		if ($input.val() == 'no') {
-			$input.val('yes');
+    if ($input.val() == 'no') {
+      $input.val('yes');
     }
-	});
+  });
 </script>
 
 <h3>Today's random words:</h3>
@@ -14,19 +14,19 @@
 <div class="words-list"></div>
 
 <div class="instructions">
-	<h3>Drag <b>one or more</b> below to search YouTube.</h3>
+  <h3>Drag <b>one or more</b> below to search YouTube.</h3>
 
-	<b><h3>Try for <u>the highest average (median)</u> number of views!*</h3></b>
-	<p><small>* out of 10 results</small></p>
+  <b><h3>Try for <u>the highest average (median)</u> number of views!*</h3></b>
+  <p><small>* out of 10 results</small></p>
 </div>
 
 <div class="drop-words-here">
-	<span class="search-prompt-text">Search YouTube:</span>
+  <span class="search-prompt-text">Search YouTube:</span>
 </div>
 
 <form class="let-the-games-begin" method="post" action="#/game">
-	<input type="hidden" name="query">
-	<input type="submit" value="Search!">
+  <input type="hidden" name="query">
+  <input type="submit" value="Search!">
 </form>
 
 <div class="message-pane"></div>

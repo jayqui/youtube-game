@@ -8,15 +8,17 @@ describe "YouTubeSearch" do
 
   describe "#search_query" do
     before(:all) do
-      print "query: "
-      p query_1 = @sample_array.sample(3)
-      print "results: "
-      p @result_1 = @yt.search_query(query_1,3)
+      @query_1 = @sample_array.sample(3)
+      @result_1 = @yt.search_query(@query_1,3)
+      @query_2 = @sample_array.sample(3)
+      @result_2 = @yt.search_query(@query_2,3)
+    end
+    it "^ gets some results" do
+      p @query_1
+      p @result_1
       puts
-      print "query: "
-      p query_2 = @sample_array.sample(3)
-      print "results: "
-      p @result_2 = @yt.search_query(query_2,3)
+      p @query_2
+      p @result_2
       puts
     end
     it "returns an array of hashes" do

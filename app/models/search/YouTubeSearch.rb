@@ -1,7 +1,6 @@
 require 'net/http'
 require 'nokogiri'
 require 'open-uri'
-require 'json'
 
 class YouTubeSearch
 
@@ -38,10 +37,3 @@ class YouTubeSearch
   end
 
 end
-
-
-# # DEMO
-# yt = YouTubeSearch.new
-# p q = %w[six example words to choose from].sample(3)
-# qa = yt.search_query(q,3).to_json
-# puts JSON.parse(qa)

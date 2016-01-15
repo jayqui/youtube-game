@@ -74,7 +74,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
   $scope.$on('$viewContentLoaded', function() {
     // I think this should be the work of a words controller
     // random small words
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 10; i++) {
       var randomNum = Math.floor(Math.random() * SIMPLE_WORDS.length);
       var $word = $("<h2>", {class: "word", text: SIMPLE_WORDS[randomNum]}).draggable({
         helper: "clone",
@@ -83,7 +83,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
       $word.appendTo(".words-list");
     }
     // random names from Twitter
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 5; i++) {
       var randomNum = Math.floor(Math.random() * TWITTER_PEOPLE.length);
       var $word = $("<h2>", {class: "word from-twitter", text: TWITTER_PEOPLE[randomNum]}).draggable({
         helper: "clone",
@@ -108,7 +108,7 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 
         // append word and x image
         if ($(ui.draggable).hasClass("from-twitter")) {
-          $(this).append($(ui.draggable).css("cursor","default").append($ximg));
+          $(this).append($(ui.draggable).draggable("disable").css("cursor","default").append($ximg));
         } else {
           $(this).append($(ui.draggable).clone().css("cursor","default").append($ximg));
         }
@@ -123,7 +123,8 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
           });
           QueryFactory.chosenWords = $scope.chosenWords;
           if ($(this).parent().hasClass("from-twitter")) {
-            $(this).parent().appendTo(".words-list");
+            $(this).parent().draggable("enable").appendTo(".words-list");
+            $(this).remove();
           } else {
             $(this).parent().remove();
           }

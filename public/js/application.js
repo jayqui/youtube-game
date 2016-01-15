@@ -129,8 +129,8 @@ controllers.YouTubeController = function setVideos($scope, $http, QueryFactory, 
 
     $(".let-the-games-begin").on("submit", function(event) {
       event.preventDefault();
-      if ($scope.chosenWords.length < 1) {
-        errorMessage("ERROR: no words selected for search.");
+      if ($scope.chosenWords.length < 3) {
+        errorMessage("ERROR: you've entered " + $scope.chosenWords.length + " of 3+ required words.");
       }
       else {
         // progress bar
